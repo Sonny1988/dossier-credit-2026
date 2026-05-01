@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Dossier de Demande de Crédit — UBERTALLI / SCHNEIDER — Mai 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #1a1a2e; background: #f4f6f9; }
+  .page { max-width: 920px; margin: 30px auto; background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
+
+  .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 40px 50px 30px; }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .header h1 { font-size: 26px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+  .header h2 { font-size: 15px; font-weight: 400; letter-spacing: 1px; color: #a0c4ff; margin-top: 6px; }
+  .header-date { text-align: right; color: #a0c4ff; font-size: 12px; line-height: 1.8; }
+  .header-names { font-size: 20px; font-weight: 600; color: #e8f4f8; margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 16px; }
+
+  .section { padding: 28px 50px; border-bottom: 1px solid #eef0f5; }
+  .section:last-child { border-bottom: none; }
+  .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #0f3460; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, #0f3460, transparent); }
+
+  .objectif-banner { background: linear-gradient(135deg, #0f3460, #1565c0); color: white; border-radius: 10px; padding: 22px 28px; margin-bottom: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; text-align: center; }
+  .obj-item .val { font-size: 24px; font-weight: 700; color: #7ec8e3; }
+  .obj-item .lab { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #a0c4ff; margin-top: 4px; }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .kpi { background: #f8faff; border: 1px solid #dde8ff; border-radius: 8px; padding: 14px; text-align: center; }
+  .kpi-value { font-size: 20px; font-weight: 700; color: #0f3460; }
+  .kpi-label { font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+  .kpi-sub { font-size: 11px; color: #888; margin-top: 2px; }
+  .kpi.green .kpi-value { color: #1a7a4a; }
+  .kpi.blue .kpi-value { color: #1565c0; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  th { background: #f0f4ff; color: #0f3460; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; padding: 10px 14px; text-align: left; border-bottom: 2px solid #d0daf0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #f0f2f7; font-size: 13px; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #fafbff; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .total-row td { background: #f0f4ff; font-weight: 700; color: #0f3460; border-top: 2px solid #c0cdf0; }
+  .highlight-row td { background: #e8f5e9; color: #1a7a4a; font-weight: 700; }
+  .target-row td { background: #e3f2fd; color: #0d47a1; font-weight: 700; }
+  .warn-row td { background: #fff8e1; color: #c47a00; font-weight: 600; }
+  .trend-up { color: #1a7a4a; font-weight: 600; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .info-block { background: #f8faff; border: 1px solid #dde8ff; border-radius: 8px; padding: 18px; }
+  .info-block h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #0f3460; margin-bottom: 12px; }
+  .info-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12.5px; align-items: baseline; gap: 8px; }
+  .info-label { color: #666; flex-shrink: 0; }
+  .info-value { font-weight: 600; color: #1a1a2e; text-align: right; }
+  .badge { display: inline-block; background: #e8f5e9; color: #1a7a4a; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .badge-blue { background: #e8f0ff; color: #0f3460; }
+  .badge-orange { background: #fff3e0; color: #c47a00; }
+
+  .bar-section { background: #f0f7ff; border: 1px solid #bee0ff; border-radius: 10px; padding: 20px; margin: 14px 0; }
+  .bar-row { margin: 14px 0; }
+  .bar-title { font-size: 12px; font-weight: 600; color: #1a1a2e; margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .bar-wrap { background: #dde8ff; border-radius: 30px; height: 22px; width: 100%; position: relative; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 30px; display: flex; align-items: center; padding-left: 12px; color: white; font-size: 11px; font-weight: 700; }
+  .bg-green { background: linear-gradient(to right, #1a7a4a, #4caf50); }
+  .bg-blue  { background: linear-gradient(to right, #0f3460, #1565c0); }
+  .bg-teal  { background: linear-gradient(to right, #00695c, #00897b); }
+  .bar-limit { position: absolute; right: 0; top: 0; width: 65%; height: 100%; border-left: 3px dashed rgba(192,57,43,0.5); display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 10px; color: rgba(192,57,43,0.8); font-weight: 700; pointer-events: none; }
+
+  .revenu-box { border: 3px solid #1a7a4a; border-radius: 12px; padding: 24px; background: #f0faf4; margin: 14px 0; }
+  .revenu-line { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid #c8e6c9; font-size: 14px; }
+  .revenu-line:last-child { border-bottom: none; padding-top: 12px; margin-top: 4px; border-top: 3px solid #1a7a4a; }
+  .revenu-line .rl { color: #2e7d32; font-weight: 600; }
+  .revenu-line .rv { font-size: 20px; font-weight: 700; color: #1a7a4a; }
+  .revenu-line.total-line .rl { font-size: 15px; color: #0f3460; }
+  .revenu-line.total-line .rv { font-size: 28px; color: #0f3460; }
+
+  .faisabilite-ok { border: 3px solid #1a7a4a; border-radius: 12px; padding: 24px; background: #f0faf4; margin: 14px 0; }
+  .faisabilite-ok h3 { color: #1a7a4a; font-size: 16px; margin-bottom: 16px; }
+
+  .strengths { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .strength-item { background: #f8faff; border-left: 4px solid #0f3460; border-radius: 0 8px 8px 0; padding: 12px 16px; }
+  .strength-item.green { border-left-color: #1a7a4a; }
+  .strength-item.orange { border-left-color: #c47a00; }
+  .strength-title { font-weight: 700; font-size: 12px; color: #1a1a2e; margin-bottom: 4px; }
+  .strength-text { font-size: 12px; color: #555; line-height: 1.5; }
+
+  .doc-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .doc-item { display: flex; align-items: center; gap: 10px; background: #f8faff; border: 1px solid #dde8ff; border-radius: 6px; padding: 10px 14px; }
+  .doc-icon { width: 32px; height: 32px; background: #0f3460; color: white; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; flex-shrink: 0; text-align: center; line-height: 1.2; }
+  .doc-name { font-weight: 600; color: #1a1a2e; font-size: 12px; }
+  .doc-type { color: #888; font-size: 11px; margin-top: 2px; }
+
+  .note-box { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 14px 18px; margin: 12px 0; font-size: 12px; color: #5d4037; line-height: 1.6; }
+  .note-box strong { color: #c47a00; }
+  .note-green { background: #e8f5e9; border-color: #a5d6a7; color: #1a3a28; }
+  .note-green strong { color: #1a7a4a; }
+  .note-blue { background: #e3f2fd; border-color: #90caf9; color: #0d47a1; }
+  .note-blue strong { color: #0d47a1; }
+
+  .footer { background: #1a1a2e; color: #8899aa; text-align: center; padding: 18px; font-size: 11px; }
+
+  @media print { body { background: white; } .page { box-shadow: none; margin: 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <h1>Dossier de Demande de Crédit</h1>
+        <h2>Analyse complète de solvabilité — Projet immobilier 2026</h2>
+      </div>
+      <div class="header-date">
+        Établi le 1er mai 2026<br>
+        Référence : UBERTALLI-2026-01<br>
+        N° FIP : 730718274138377893A
+      </div>
+    </div>
+    <div class="header-names">M. UBERTALLI Sonny Georges Vincent &amp; Mme SCHNEIDER Nina</div>
+  </div>
+
+  <!-- OBJECTIF -->
+  <div class="section">
+    <div class="section-title">Objectif du projet immobilier</div>
+    <div class="objectif-banner">
+      <div class="obj-item"><div class="val">200 – 230 k€</div><div class="lab">Montant à emprunter</div></div>
+      <div class="obj-item"><div class="val">25 ans</div><div class="lab">Durée souhaitée</div></div>
+      <div class="obj-item"><div class="val">20 000 €</div><div class="lab">Budget travaux inclus</div></div>
+      <div class="obj-item"><div class="val">30 000 €</div><div class="lab">Apport disponible</div></div>
+    </div>
+    <div class="note-blue note-box">
+      <strong>Périmètre :</strong> Achat appartement dans l'ancien + 20 000 € de travaux, financement sur 25 ans. Budget total opération : 230 000 – 260 000 € (emprunt + apport), hors frais de notaire (~8% dans l'ancien, soit ~16 000 – 18 000 €).
+    </div>
+  </div>
+
+  <!-- KPI -->
+  <div class="section">
+    <div class="section-title">Indicateurs clés du dossier</div>
+    <div class="kpi-grid">
+      <div class="kpi green">
+        <div class="kpi-value">6 143 €</div>
+        <div class="kpi-label">Revenus nets / mois</div>
+        <div class="kpi-sub">Salaires + prime + locatif</div>
+      </div>
+      <div class="kpi green">
+        <div class="kpi-value">13,8%</div>
+        <div class="kpi-label">Taux endettement actuel</div>
+        <div class="kpi-sub">Seuil légal : 35%</div>
+      </div>
+      <div class="kpi green">
+        <div class="kpi-value">1 303 €</div>
+        <div class="kpi-label">Mensualité max dispo</div>
+        <div class="kpi-sub">Pour un nouveau prêt</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">30 000 €</div>
+        <div class="kpi-label">Apport</div>
+        <div class="kpi-sub">+ 22 k€ patrimoine</div>
+      </div>
+      <div class="kpi green">
+        <div class="kpi-value">230 k€ ✓</div>
+        <div class="kpi-label">Objectif atteignable</div>
+        <div class="kpi-sub">Taux d'endettement 33%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IDENTITÉ -->
+  <div class="section">
+    <div class="section-title">Identité et situation familiale</div>
+    <div class="two-col">
+      <div class="info-block">
+        <h4>Déclarant 1 — Emprunteur principal</h4>
+        <div class="info-row"><span class="info-label">Nom</span><span class="info-value">UBERTALLI Sonny Georges Vincent</span></div>
+        <div class="info-row"><span class="info-label">Né le</span><span class="info-value">23 juillet 1988 — Albertville (73)</span></div>
+        <div class="info-row"><span class="info-label">Nationalité</span><span class="info-value">Française</span></div>
+        <div class="info-row"><span class="info-label">N° fiscal</span><span class="info-value">14 27 421 742 474</span></div>
+        <div class="info-row"><span class="info-label">N° SS</span><span class="info-value">1 88 07 73 011 05 191</span></div>
+        <div class="info-row"><span class="info-label">Email</span><span class="info-value">sonny.ubertalli@gmail.com</span></div>
+      </div>
+      <div class="info-block">
+        <h4>Déclarant 2 — Co-emprunteur(se)</h4>
+        <div class="info-row"><span class="info-label">Nom</span><span class="info-value">SCHNEIDER Nina</span></div>
+        <div class="info-row"><span class="info-label">Née le</span><span class="info-value">29 février 1992 — Wesel (Allemagne)</span></div>
+        <div class="info-row"><span class="info-label">Nationalité</span><span class="info-value">Allemande</span></div>
+        <div class="info-row"><span class="info-label">N° fiscal</span><span class="info-value">30 41 007 305 315</span></div>
+        <div class="info-row"><span class="info-label">N° SS</span><span class="info-value">2 92 02 99 999 999 97</span></div>
+        <div class="info-row"><span class="info-label">Situation</span><span class="info-value"><span class="badge">Mariés en 2025</span></span></div>
+      </div>
+    </div>
+    <div class="info-block" style="margin-top:14px;">
+      <h4>Foyer</h4>
+      <div class="info-row"><span class="info-label">Adresse fiscale</span><span class="info-value">Les Sapineaux, 511 Le Fay — 73120 COURCHEVEL</span></div>
+      <div class="info-row"><span class="info-label">Enfants à charge</span><span class="info-value">2 — Charly (20/11/2022) et Tom (05/11/2025)</span></div>
+      <div class="info-row"><span class="info-label">Parts fiscales</span><span class="info-value">2,50 parts</span></div>
+      <div class="info-row"><span class="info-label">Logement actuel</span><span class="info-value">Logement de fonction — Les Sapineaux, lié au poste</span></div>
+    </div>
+  </div>
+
+  <!-- SITUATION PRO -->
+  <div class="section">
+    <div class="section-title">Situation professionnelle</div>
+    <div class="two-col">
+      <div class="info-block">
+        <h4>M. UBERTALLI Sonny</h4>
+        <div class="info-row"><span class="info-label">Employeur</span><span class="info-value">SCI LA MONTAGNE — SIRET 753 133 032 00015</span></div>
+        <div class="info-row"><span class="info-label">Secteur</span><span class="info-value">6820B — Gestion immobilière, Cannes</span></div>
+        <div class="info-row"><span class="info-label">Poste</span><span class="info-value">Assistant Manager — Catégorie A — Coeff. 660</span></div>
+        <div class="info-row"><span class="info-label">Contrat</span><span class="info-value"><span class="badge">CDI temps plein — 35h</span></span></div>
+        <div class="info-row"><span class="info-label">Entrée</span><span class="info-value">01/12/2021 — <strong>4 ans 5 mois</strong></span></div>
+        <div class="info-row"><span class="info-label">Salaire net mensuel fixe</span><span class="info-value"><strong>~2 600 €/mois</strong></span></div>
+        <div class="info-row"><span class="info-label">Salaire brut mensuel</span><span class="info-value">3 659,53 € (base + ancienneté)</span></div>
+        <div class="info-row"><span class="info-label">Prime annuelle</span><span class="info-value"><strong>14 000 € brut (~10 010 € net)</strong></span></div>
+        <div class="info-row"><span class="info-label">Revenu total annuel net</span><span class="info-value"><strong>~41 210 € net/an</strong></span></div>
+        <div class="info-row"><span class="info-label">Soit en mensuel moyen</span><span class="info-value"><strong>~3 434 €/mois net (prime lissée)</strong></span></div>
+      </div>
+      <div class="info-block">
+        <h4>Mme SCHNEIDER Nina</h4>
+        <div class="info-row"><span class="info-label">Employeur</span><span class="info-value">SAS LA MONTAGNE — SIRET 803 266 626 00016</span></div>
+        <div class="info-row"><span class="info-label">Secteur</span><span class="info-value">6820B — Gestion immobilière, Paris</span></div>
+        <div class="info-row"><span class="info-label">Poste</span><span class="info-value">Employée de maison — Catégorie A — Coeff. 593</span></div>
+        <div class="info-row"><span class="info-label">Contrat</span><span class="info-value"><span class="badge">CDI temps plein — 35h</span></span></div>
+        <div class="info-row"><span class="info-label">Entrée</span><span class="info-value">01/12/2021 — <strong>4 ans 5 mois</strong></span></div>
+        <div class="info-row"><span class="info-label">Statut</span><span class="info-value"><span class="badge">De retour au travail — 2026</span></span></div>
+        <div class="info-row"><span class="info-label">Salaire net mensuel</span><span class="info-value"><strong>1 800 €/mois</strong></span></div>
+        <div class="info-row"><span class="info-label">Brut annuel (2024, an normal)</span><span class="info-value">26 998 €</span></div>
+        <div class="info-row"><span class="info-label">Note</span><span class="info-value">Congé maternité 2e enfant (né 05/11/2025) — retour effectif 2026</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVENUS MENSUELS — CŒUR DU CALCUL -->
+  <div class="section">
+    <div class="section-title">Revenus mensuels nets — base de calcul bancaire</div>
+
+    <div class="revenu-box">
+      <div class="revenu-line">
+        <span class="rl">M. UBERTALLI — salaire net mensuel fixe</span>
+        <span class="rv">2 600 €</span>
+      </div>
+      <div class="revenu-line">
+        <span class="rl">M. UBERTALLI — prime annuelle lissée (14 000 € brut ÷ 12, net 71,5%)</span>
+        <span class="rv">834 €</span>
+      </div>
+      <div class="revenu-line">
+        <span class="rl">Mme SCHNEIDER — salaire net mensuel</span>
+        <span class="rv">1 800 €</span>
+      </div>
+      <div class="revenu-line">
+        <span class="rl">Revenus locatifs retenus à 70% (15 584 € brut / an — liasse fiscale officielle 2025)</span>
+        <span class="rv">909 €</span>
+      </div>
+      <div class="revenu-line total-line">
+        <span class="rl"><strong>TOTAL REVENUS NETS MENSUELS</strong></span>
+        <span class="rv"><strong>6 143 €</strong></span>
+      </div>
+    </div>
+
+    <div class="note-box" style="margin-top:12px;">
+      <strong>Méthode de calcul de la prime :</strong> La prime annuelle de 14 000 € brut est fiscalisée comme salaire (visible sur les avis d'imposition). Pour la banque, elle est lissée sur 12 mois à raison de 14 000 × 71,5% (ratio net/brut constaté sur fiches de paie) ÷ 12 = <strong>834 €/mois</strong>. Pour la faire valider, fournir une lettre de l'employeur confirmant son caractère récurrent, ou le bulletin de paie du mois où elle est versée.
+    </div>
+  </div>
+
+  <!-- REVENUS SUR 3 ANS -->
+  <div class="section">
+    <div class="section-title">Revenus déclarés sur 3 ans (avis d'imposition officiels)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th class="num">2023</th>
+          <th class="num">2024</th>
+          <th class="num">2025 (déclaré 28/04/26)</th>
+          <th class="num">Évolution 2023→2025</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Salaires bruts M. UBERTALLI</td>
+          <td class="num">43 417 €</td>
+          <td class="num">47 586 €</td>
+          <td class="num">49 873 €</td>
+          <td class="num trend-up">+14,9%</td>
+        </tr>
+        <tr>
+          <td>Salaires bruts Mme SCHNEIDER</td>
+          <td class="num">18 024 €</td>
+          <td class="num">26 998 €</td>
+          <td class="num">19 437 € *</td>
+          <td class="num trend-up">+7,8%</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total salaires bruts déclarés</td>
+          <td class="num">61 441 €</td>
+          <td class="num">74 584 €</td>
+          <td class="num">69 310 €</td>
+          <td class="num trend-up">+12,8%</td>
+        </tr>
+        <tr>
+          <td>Revenus locatifs bruts LMNP (Les Sapineaux — liasse officielle)</td>
+          <td class="num">—</td>
+          <td class="num">6 926 €</td>
+          <td class="num">15 584 €</td>
+          <td class="num trend-up">+125%</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Total revenus bruts globaux</td>
+          <td class="num">61 441 €</td>
+          <td class="num">81 510 €</td>
+          <td class="num">84 894 €</td>
+          <td class="num">+38,2%</td>
+        </tr>
+        <tr>
+          <td>Revenu fiscal de référence (RFR)</td>
+          <td class="num">51 922 €</td>
+          <td class="num">64 992 €</td>
+          <td class="num">~75 000 € (est.)</td>
+          <td class="num trend-up">+44%</td>
+        </tr>
+        <tr>
+          <td>Taux moyen d'imposition</td>
+          <td class="num">3,49%</td>
+          <td class="num">3,70%</td>
+          <td class="num">—</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px; color:#888; margin-top:6px;">* Baisse en 2025 : congé maternité 2e enfant (05/11/2025) — IJ CPAM 2 621 € incluses. Mme SCHNEIDER est de retour au travail en 2026 à 1 800 €/mois net.</p>
+  </div>
+
+  <!-- ENDETTEMENT ET CAPACITÉ -->
+  <div class="section">
+    <div class="section-title">Endettement actuel et capacité de remboursement</div>
+    <div class="two-col">
+      <div class="info-block">
+        <h4>Charges de crédit existantes</h4>
+        <div class="info-row"><span class="info-label">Mensualité prêt immobilier</span><span class="info-value">707 €/mois</span></div>
+        <div class="info-row"><span class="info-label">Assurance crédit</span><span class="info-value">140 €/mois</span></div>
+        <div style="border-top:2px solid #0f3460; padding-top:8px; margin-top:6px;">
+          <div class="info-row">
+            <span style="font-weight:700; color:#0f3460;">Total charge mensuelle actuelle</span>
+            <span style="font-weight:700; color:#0f3460; font-size:16px;">847 €/mois</span>
+          </div>
+        </div>
+        <div class="info-row" style="margin-top:8px;"><span class="info-label">Tableau d'amortissement</span><span class="info-value">Joint (29/10/2024)</span></div>
+      </div>
+      <div class="info-block">
+        <h4>Calcul de la capacité résiduelle</h4>
+        <div class="info-row"><span class="info-label">Revenus nets mensuels</span><span class="info-value"><strong>6 143 €</strong></span></div>
+        <div class="info-row"><span class="info-label">Taux d'endettement actuel</span><span class="info-value" style="color:#1a7a4a; font-size:16px; font-weight:700;">13,8%</span></div>
+        <div class="info-row"><span class="info-label">Seuil légal HCSF</span><span class="info-value"><strong>35%</strong></span></div>
+        <div class="info-row"><span class="info-label">Mensualité totale max (35%)</span><span class="info-value">6 143 × 35% = 2 150 €</span></div>
+        <div class="info-row"><span class="info-label">Moins charges actuelles</span><span class="info-value">- 847 €</span></div>
+        <div style="border-top:2px solid #1a7a4a; padding-top:8px; margin-top:6px;">
+          <div class="info-row">
+            <span style="font-weight:700; color:#1a7a4a;">Mensualité dispo nouveau prêt</span>
+            <span style="font-weight:700; color:#1a7a4a; font-size:18px;">1 303 €/mois</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bar-section" style="margin-top:18px;">
+      <strong style="font-size:13px; color:#0f3460;">Visualisation de l'endettement</strong>
+      <div class="bar-row">
+        <div class="bar-title"><span>Taux actuel — crédit en cours seul</span><span style="color:#1a7a4a;">13,8%</span></div>
+        <div class="bar-wrap">
+          <div class="bar-fill bg-green" style="width:39.4%;">13,8%</div>
+          <div class="bar-limit">SEUIL 35%</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-title"><span>Avec nouveau prêt 200 000 € / 25 ans (1 001 €/mois)</span><span style="color:#1a7a4a;">30,1% ✓</span></div>
+        <div class="bar-wrap">
+          <div class="bar-fill bg-blue" style="width:86%;">30,1%</div>
+          <div class="bar-limit">SEUIL 35%</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-title"><span>Avec nouveau prêt 220 000 € / 25 ans (1 101 €/mois)</span><span style="color:#1a7a4a;">31,7% ✓</span></div>
+        <div class="bar-wrap">
+          <div class="bar-fill bg-teal" style="width:90.6%;">31,7%</div>
+          <div class="bar-limit">SEUIL 35%</div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-title"><span>Avec nouveau prêt 230 000 € / 25 ans (1 151 €/mois)</span><span style="color:#1a7a4a;">32,5% ✓</span></div>
+        <div class="bar-wrap">
+          <div class="bar-fill bg-teal" style="width:92.9%;">32,5%</div>
+          <div class="bar-limit">SEUIL 35%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAISABILITÉ OBJECTIF -->
+  <div class="section">
+    <div class="section-title">Analyse de faisabilité — objectif 200 000 – 230 000 € sur 25 ans</div>
+
+    <div class="faisabilite-ok">
+      <h3>✅ Objectif 200 000 – 230 000 € sur 25 ans : RÉALISABLE</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Montant emprunté</th>
+            <th class="num">Taux 3,0%</th>
+            <th class="num">Taux 3,5%</th>
+            <th class="num">Taux 4,0%</th>
+            <th class="num">Taux endett. total</th>
+            <th>Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>175 000 € / 25 ans</td>
+            <td class="num">830 €</td>
+            <td class="num">876 €</td>
+            <td class="num">924 €</td>
+            <td class="num">~28,0%</td>
+            <td><span class="badge">✓ Très confortable</span></td>
+          </tr>
+          <tr class="target-row">
+            <td><strong>200 000 € / 25 ans ← cible basse</strong></td>
+            <td class="num">948 €</td>
+            <td class="num"><strong>1 001 €</strong></td>
+            <td class="num">1 056 €</td>
+            <td class="num"><strong>30,1%</strong></td>
+            <td><span class="badge">✓ Confortable</span></td>
+          </tr>
+          <tr class="target-row">
+            <td><strong>220 000 € / 25 ans ← cible médiane</strong></td>
+            <td class="num">1 043 €</td>
+            <td class="num"><strong>1 101 €</strong></td>
+            <td class="num">1 162 €</td>
+            <td class="num"><strong>31,7%</strong></td>
+            <td><span class="badge">✓ Bon</span></td>
+          </tr>
+          <tr class="target-row">
+            <td><strong>230 000 € / 25 ans ← cible haute</strong></td>
+            <td class="num">1 090 €</td>
+            <td class="num"><strong>1 151 €</strong></td>
+            <td class="num">1 215 €</td>
+            <td class="num"><strong>32,5%</strong></td>
+            <td><span class="badge">✓ Dans la limite</span></td>
+          </tr>
+          <tr class="warn-row">
+            <td>250 000 € / 25 ans ← au-delà</td>
+            <td class="num">1 185 €</td>
+            <td class="num">1 252 €</td>
+            <td class="num">1 320 €</td>
+            <td class="num">~34,2%</td>
+            <td><span class="badge-orange badge">⚠ Proche limite</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:14px; font-size:12px; color:#1a3a28; background:#c8e6c9; padding:10px 14px; border-radius:6px;">
+        <strong>Conclusion :</strong> Avec une mensualité disponible de <strong>1 303 €/mois</strong>, le dossier permet d'emprunter jusqu'à <strong>230 000 €</strong> sur 25 ans à 3,5% (taux d'endettement total 32,5%), bien en dessous du seuil HCSF de 35%. Même à 4%, le taux reste sous 35% pour la cible de 230 000 €. L'objectif est <strong>pleinement atteignable</strong> avec les revenus actuels du foyer.
+      </p>
+    </div>
+  </div>
+
+  <!-- BUDGET TOTAL -->
+  <div class="section">
+    <div class="section-title">Budget total de l'opération</div>
+    <table>
+      <thead>
+        <tr><th>Poste</th><th class="num">Montant</th><th>Financement</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Prix d'achat de l'appartement</td>
+          <td class="num">180 000 – 210 000 €</td>
+          <td>Emprunt bancaire</td>
+        </tr>
+        <tr>
+          <td>Budget travaux (inclus dans le prêt)</td>
+          <td class="num">20 000 €</td>
+          <td>Emprunt bancaire</td>
+        </tr>
+        <tr class="target-row">
+          <td><strong>Total emprunté</strong></td>
+          <td class="num"><strong>200 000 – 230 000 €</strong></td>
+          <td>Prêt 25 ans</td>
+        </tr>
+        <tr>
+          <td>Frais de notaire (~8% ancienne)</td>
+          <td class="num">~15 000 – 17 000 €</td>
+          <td>Sur apport (30 000 €)</td>
+        </tr>
+        <tr>
+          <td>Frais de dossier + garantie</td>
+          <td class="num">~2 000 – 3 000 €</td>
+          <td>Sur apport</td>
+        </tr>
+        <tr>
+          <td>Apport mobilisé</td>
+          <td class="num">17 000 – 20 000 €</td>
+          <td>Reste : 10 000 – 13 000 € en réserve</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Budget total opération</td>
+          <td class="num">217 000 – 250 000 €</td>
+          <td>Emprunt + apport frais</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PATRIMOINE -->
+  <div class="section">
+    <div class="section-title">Patrimoine et actifs disponibles</div>
+    <div class="three-col">
+      <div class="info-block">
+        <h4>Apport personnel</h4>
+        <div class="info-row"><span class="info-label">Disponible</span><span class="info-value" style="font-size:18px; color:#1a7a4a; font-weight:700;">30 000 €</span></div>
+        <div class="info-row"><span class="info-label">Banque</span><span class="info-value">Crédit Agricole des Savoie</span></div>
+        <div class="info-row"><span class="info-label">IBAN</span><span class="info-value" style="font-size:11px;">FR76 1810 6008 109X…</span></div>
+        <div class="info-row"><span class="info-label">Usage</span><span class="info-value"><span class="badge">Frais notaire + dossier</span></span></div>
+      </div>
+      <div class="info-block">
+        <h4>Compte-titres (actions)</h4>
+        <div class="info-row"><span class="info-label">Valorisation</span><span class="info-value" style="font-size:18px; color:#0f3460; font-weight:700;">12 000 €</span></div>
+        <div class="info-row"><span class="info-label">Liquidité</span><span class="info-value">Bonne (J+2)</span></div>
+        <div class="info-row"><span class="info-label">Usage</span><span class="info-value"><span class="badge-blue badge">Complément ou réserve</span></span></div>
+      </div>
+      <div class="info-block">
+        <h4>Coinbase (cryptos)</h4>
+        <div class="info-row"><span class="info-label">Valorisation</span><span class="info-value" style="font-size:18px; color:#c47a00; font-weight:700;">10 000 €</span></div>
+        <div class="info-row"><span class="info-label">Déclaré DGFiP</span><span class="info-value"><span class="badge">Oui — case 8UU</span></span></div>
+        <div class="info-row"><span class="info-label">Usage bancaire</span><span class="info-value"><span class="badge-orange badge">Patrimoine informatif</span></span></div>
+      </div>
+    </div>
+    <table style="margin-top:14px;">
+      <thead>
+        <tr><th>Actif</th><th class="num">Montant</th><th>Prise en compte bancaire</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Liquidités (Crédit Agricole)</td><td class="num bold">30 000 €</td><td><span class="badge">100% — apport direct</span></td></tr>
+        <tr><td>Compte-titres (actions)</td><td class="num">12 000 €</td><td><span class="badge-blue badge">Signal patrimoine — mobilisable si besoin</span></td></tr>
+        <tr><td>Cryptomonnaies (Coinbase — déclarées)</td><td class="num">10 000 €</td><td><span class="badge-orange badge">Informatif — non retenu en garantie</span></td></tr>
+        <tr><td>Bien immobilier locatif (LMNP)</td><td class="num">valeur de marché</td><td><span class="badge-blue badge">Actif patrimonial — expérience investisseur</span></td></tr>
+        <tr class="total-row"><td>Total actifs mobilisables (hors immo)</td><td class="num">52 000 €</td><td>Profil patrimonial solide pour un profil salarié</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- LMNP -->
+  <div class="section">
+    <div class="section-title">Activité de location meublée (LMNP) — Liasse fiscale officielle 2025</div>
+    <div class="two-col">
+      <div class="info-block">
+        <h4>Compte de résultat 2025 — Les Sapineaux (SIREN 528878457)</h4>
+        <div class="info-row"><span class="info-label">CA locatif 2025</span><span class="info-value"><strong>15 584 €</strong> (+125% vs 2024)</span></div>
+        <div class="info-row"><span class="info-label">CA locatif 2024 (comparatif)</span><span class="info-value">6 926 €</span></div>
+        <div class="info-row"><span class="info-label">Charges réelles décaissées</span><span class="info-value">4 627 € (charges ext.) + 1 322 € (taxes)</span></div>
+        <div class="info-row"><span class="info-label">Charges financières</span><span class="info-value">5 319 €</span></div>
+        <div class="info-row"><span class="info-label">Amortissements (fictifs)</span><span class="info-value">11 414 € — non décaissés</span></div>
+        <div class="info-row"><span class="info-label">Résultat comptable</span><span class="info-value">-1 356 € (déficit = amortissements)</span></div>
+        <div class="info-row"><span class="info-label"><strong>Cash-flow réel (hors amort.)</strong></span><span class="info-value"><span class="badge">+4 316 €/an positif</span></span></div>
+        <div class="info-row"><span class="info-label">Retenu à 70% par la banque</span><span class="info-value"><strong>909 €/mois</strong></span></div>
+      </div>
+      <div class="info-block">
+        <h4>Bilan & statut fiscal</h4>
+        <div class="info-row"><span class="info-label">Activité</span><span class="info-value">Loueur en meublé — régime simplifié</span></div>
+        <div class="info-row"><span class="info-label">Adresse du bien</span><span class="info-value">511 route du Fay, 73120 Courchevel</span></div>
+        <div class="info-row"><span class="info-label">Valeur nette comptable (immo.)</span><span class="info-value"><strong>143 526 €</strong></span></div>
+        <div class="info-row"><span class="info-label">dont terrain</span><span class="info-value">11 056 € (non amortissable)</span></div>
+        <div class="info-row"><span class="info-label">dont construction nette</span><span class="info-value">113 459 € (brut 133 252 €)</span></div>
+        <div class="info-row"><span class="info-label">Capitaux propres</span><span class="info-value">150 602 €</span></div>
+        <div class="info-row"><span class="info-label">Emprunts au bilan</span><span class="info-value"><span class="badge">Aucune dette résiduelle</span></span></div>
+        <div class="info-row"><span class="info-label">Liasse télédéclarée</span><span class="info-value">29/04/2026 — via Teledec.fr</span></div>
+      </div>
+    </div>
+    <div class="note-green note-box" style="margin-top:12px;">
+      <strong>Point clé pour la banque :</strong> Le déficit LMNP (-1 356 €) est intégralement constitué d'amortissements comptables non décaissés (11 414 €). La trésorerie réelle est positive (+4 316 €/an). Ce mécanisme est une optimisation fiscale légale propre au statut LMNP au réel — il ne reflète aucune perte de revenus. Le bien génère 15 584 €/an de loyers encaissés, documentés par liasse fiscale officielle.
+    </div>
+  </div>
+
+  <!-- ATOUTS -->
+  <div class="section">
+    <div class="section-title">Atouts du dossier</div>
+    <div class="strengths">
+      <div class="strength-item green">
+        <div class="strength-title">Taux d'endettement très bas : 13,8%</div>
+        <div class="strength-text">Le crédit existant (847 €/mois) ne représente que 13,8% des revenus nets. La marge jusqu'au seuil légal de 35% est de +21,2 points — dossier très solide sur ce critère.</div>
+      </div>
+      <div class="strength-item green">
+        <div class="strength-title">Double CDI stable — 4 ans 5 mois d'ancienneté</div>
+        <div class="strength-text">Les deux déclarants sont en CDI dans le même groupe depuis exactement le même jour (01/12/2021). Aucune rupture, aucune période d'essai. Employeur actif.</div>
+      </div>
+      <div class="strength-item green">
+        <div class="strength-title">Revenus en forte progression : +34% en 3 ans</div>
+        <div class="strength-text">RFR : 51 922 € (2023) → 64 992 € (2024) → ~75 000 € (2025). Trajectoire haussière documentée sur 3 exercices consécutifs. Signal de dynamisme professionnel.</div>
+      </div>
+      <div class="strength-item green">
+        <div class="strength-title">Deux revenus solides sur le foyer</div>
+        <div class="strength-text">Sonny : 2 600 € net/mois + 10 010 €/an de prime. Nina : 1 800 € net/mois. Total fixe annuel du foyer : ~56 400 € net, sans les revenus locatifs.</div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-title">Apport de 30 000 € + patrimoine 22 000 €</div>
+        <div class="strength-text">30 000 € en liquidités prêts à mobiliser + 12 000 € en actions + 10 000 € en cryptos déclarées = 52 000 € de patrimoine transparent et documenté.</div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-title">Activité locative en forte croissance (+125%)</div>
+        <div class="strength-text">15 584 € de CA locatif en 2025 (liasse officielle) vs 6 926 € en 2024. Bien sans dette résiduelle, valeur nette comptable 143 526 €. Expérience LMNP documentée et déclarée.</div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-title">Très faible taux d'imposition : 3,70%</div>
+        <div class="strength-text">Gestion patrimoniale optimisée (frais réels, LMNP, 2,5 parts). Impôt net 2024 : seulement 2 402 € sur 64 992 € de revenus de référence.</div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-title">Transparence fiscale totale</div>
+        <div class="strength-text">Comptes étrangers déclarés (N26, Sparkasse Allemagne), cryptos déclarées (Coinbase, case 8UU). Dossier cohérent, sans zone d'ombre.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINTS D'ATTENTION -->
+  <div class="section">
+    <div class="section-title">Points à clarifier avec la banquière</div>
+    <table>
+      <thead>
+        <tr><th>Point</th><th>Situation</th><th>Action recommandée</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Prime 14 000 € brut</strong></td>
+          <td>Fiscalisée comme salaire (visible avis d'imposition) — versée ponctuellement hors mensuel</td>
+          <td>Fournir lettre employeur confirmant la récurrence, ou le bulletin du mois de versement</td>
+        </tr>
+        <tr>
+          <td><strong>Logement de fonction</strong></td>
+          <td>Les Sapineaux occupé gratuitement — avantage en nature lié à l'emploi</td>
+          <td>Préciser le projet : achat = résidence principale ou secondaire ? Impact sur le logement actuel ?</td>
+        </tr>
+        <tr>
+          <td><strong>Comptes bancaires Allemagne</strong></td>
+          <td>4 comptes déclarés (N26, Sparkasse) — case 8UU cochée</td>
+          <td>Fournir relevés 3 mois si demandés</td>
+        </tr>
+        <tr>
+          <td><strong>Cryptos Coinbase (10 000 €)</strong></td>
+          <td>Déclarées — non retenues en garantie</td>
+          <td>Mentionner comme patrimoine actif — ne pas en faire un apport</td>
+        </tr>
+        <tr>
+          <td><strong>Déficit LMNP (-1 356 €)</strong></td>
+          <td>Amortissements comptables (11 414 €) — cash-flow réel positif (+4 316 €/an). Liasse 2025 télédéclarée le 29/04/2026.</td>
+          <td>Joindre la liasse fiscale 2025 (Les Sapineaux). Expliquer : déficit = optimisation LMNP au réel, pas une perte de trésorerie.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PIÈCES JUSTIFICATIVES -->
+  <div class="section">
+    <div class="section-title">Pièces justificatives jointes</div>
+    <div class="doc-list">
+      <div class="doc-item">
+        <div class="doc-icon">IR<br>2023</div>
+        <div><div class="doc-name">Avis d'imposition 2024 (revenus 2023)</div><div class="doc-type">RFR 51 922 € — remboursement 1 715 €</div></div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">IR<br>2024</div>
+        <div><div class="doc-name">Avis d'imposition 2025 (revenus 2024)</div><div class="doc-type">RFR 64 992 € — solde 484 €</div></div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">2042</div>
+        <div><div class="doc-name">Déclaration revenus 2025 (28/04/2026)</div><div class="doc-type">Salaires + LMNP + Booking/Airbnb + comptes étrangers</div></div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">BP<br>FÉV</div>
+        <div><div class="doc-name">Bulletin de paie — Sonny — Février 2026</div><div class="doc-type">SCI La Montagne — Brut 3 659 € — Net 2 616 €</div></div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">BP<br>AVR</div>
+        <div><div class="doc-name">Bulletin de paie — Sonny — Avril 2026</div><div class="doc-type">SCI La Montagne — Brut 3 659 € — Net 2 616 €</div></div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">CDI</div>
+        <div><div class="doc-name">Contrat CDI — Sonny UBERTALLI</div><div class="doc-type">SCI La Montagne — Depuis 01/12/2021</div></div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">CDI</div>
+        <div><div class="doc-name">Contrat CDI — Nina SCHNEIDER</div><div class="doc-type">SAS La Montagne — Depuis 01/12/2021</div></div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">AMO</div>
+        <div><div class="doc-name">Tableau d'amortissement — crédit en cours</div><div class="doc-type">707 €/mois + 140 € assurance — oct. 2024</div></div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">LMNP<br>2025</div>
+        <div><div class="doc-name">Liasse fiscale 2025 — Les Sapineaux (SIREN 528878457)</div><div class="doc-type">CA 15 584 € — Bilan net 150 602 € — Télédéclarée 29/04/2026</div></div>
+      </div>
+    </div>
+    <div class="note-box" style="margin-top:16px;">
+      <strong>Documents à joindre en complément :</strong>
+      Relevés bancaires Crédit Agricole des Savoie — 3 derniers mois &bull;
+      Justificatif de mariage 2025 (livret de famille) &bull;
+      Pièces d'identité (CNI Sonny + passeport Nina) &bull;
+      3 derniers bulletins de paie de Mme SCHNEIDER (retour congé mat.) &bull;
+      Lettre employeur confirmant prime annuelle 14 000 € brut &bull;
+      Relevé compte-titres (12 000 €) &bull;
+      Titre de propriété ou bail du bien locatif LMNP
+    </div>
+  </div>
+
+  <div class="footer">
+    Dossier établi le 1er mai 2026 — M. UBERTALLI Sonny &amp; Mme SCHNEIDER Nina — 511 Le Fay, 73120 Courchevel<br>
+    Document confidentiel — Usage bancaire exclusif — Chiffres issus des documents fiscaux et bulletins de paie officiels
+  </div>
+
+</div>
+</body>
+</html>
