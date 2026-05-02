@@ -277,6 +277,7 @@ footer strong { color: #a0c4ff; }
   <a href="#revenus">Revenus</a>
   <a href="#endettement">Endettement</a>
   <a href="#simulation">Simulation</a>
+  <a href="#differe">Différé</a>
   <a href="#patrimoine">Patrimoine</a>
   <a href="#lmnp">LMNP</a>
   <a href="#atouts">Atouts</a>
@@ -560,6 +561,67 @@ footer strong { color: #a0c4ff; }
   </div>
 </div>
 
+<!-- FRANCHISE / DIFFÉRÉ -->
+<div class="section" id="differe">
+  <div class="section-header">
+    <span class="section-icon">⏱️</span>
+    <div>
+      <div class="section-title">Départ différé — Franchise de remboursement</div>
+      <div class="section-sub">Demande d'un différé de 6 à 12 mois pour réaliser les travaux avant exploitation</div>
+    </div>
+  </div>
+
+  <div class="note blue" style="margin-bottom:16px;">
+    🔧 <strong>Pourquoi un différé ?</strong> Le projet inclut <strong>20 000 € de travaux</strong> à réaliser après acquisition. Un différé de remboursement permet de finaliser les travaux et de commencer l'exploitation locative <em>avant</em> d'être tenu de rembourser le capital. C'est un dispositif bancaire standard, compatible avec ce profil dossier.
+  </div>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:16px;">
+    <div class="card blue-border">
+      <div class="card-title">🔵 Option A — Franchise partielle (intérêts seuls)</div>
+      <div class="lmnp-stat"><span class="lmnp-label">Durée souhaitée</span><span class="lmnp-value">6 à 12 mois</span></div>
+      <div class="lmnp-stat"><span class="lmnp-label">Mensualité pendant franchise</span><span class="lmnp-value" style="color:var(--blue); font-size:16px; font-weight:800;">671 €/mois</span></div>
+      <div class="lmnp-stat"><span class="lmnp-label">Endettement pendant franchise</span><span class="lmnp-value" style="color:var(--green); font-weight:800;">24,7% ✅</span></div>
+      <div class="lmnp-stat"><span class="lmnp-label">Capital restant (inchangé)</span><span class="lmnp-value">230 000 €</span></div>
+      <div class="lmnp-stat"><span class="lmnp-label">Mensualité après (24 ans, 3,5%)</span><span class="lmnp-value" style="font-weight:800;">1 182 €/mois</span></div>
+      <div class="lmnp-stat"><span class="lmnp-label">Endettement après franchise</span><span class="lmnp-value" style="color:var(--green); font-weight:800;">33,0% ✅</span></div>
+      <div style="margin-top:12px; padding:10px 12px; background:var(--green-light); border-radius:8px; font-size:12px; color:#2e7d32; line-height:1.6;">
+        <strong>✓ Option recommandée.</strong> Capital stable, mensualité post-travaux connue à l'avance. La plus courante et la mieux acceptée par les comités de crédit.
+      </div>
+    </div>
+    <div class="card gold-border">
+      <div class="card-title">🟡 Option B — Franchise totale (aucune mensualité)</div>
+      <div class="lmnp-stat"><span class="lmnp-label">Durée souhaitée</span><span class="lmnp-value">6 à 12 mois</span></div>
+      <div class="lmnp-stat"><span class="lmnp-label">Mensualité pendant franchise</span><span class="lmnp-value" style="color:var(--green); font-size:16px; font-weight:800;">0 € aucune charge</span></div>
+      <div class="lmnp-stat"><span class="lmnp-label">Endettement pendant franchise</span><span class="lmnp-value" style="color:var(--green); font-weight:800;">13,8% ✅</span></div>
+      <div class="lmnp-stat"><span class="lmnp-label">Capital après 12 mois (capitalisé)</span><span class="lmnp-value">~238 180 €</span></div>
+      <div class="lmnp-stat"><span class="lmnp-label">Mensualité après (24 ans, 3,5%)</span><span class="lmnp-value" style="font-weight:800;">1 224 €/mois</span></div>
+      <div class="lmnp-stat"><span class="lmnp-label">Endettement après franchise</span><span class="lmnp-value" style="color:var(--green); font-weight:800;">33,7% ✅</span></div>
+      <div style="margin-top:12px; padding:10px 12px; background:var(--gold-light); border-radius:8px; font-size:12px; color:#78350f; line-height:1.6;">
+        <strong>ℹ️ Intérêts capitalisés.</strong> Les intérêts non payés s'ajoutent au capital. Mensualité ~42 €/mois de plus qu'Option A. Seuil légal toujours respecté.
+      </div>
+    </div>
+  </div>
+
+  <div class="card green-border">
+    <div class="card-title">📊 Comparatif — impact du différé sur le taux d'endettement</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Scénario</th><th class="num">Mensualité</th><th class="num">Endettement</th><th>Verdict</th></tr>
+      </thead>
+      <tbody>
+        <tr class="good"><td>Option A · pendant franchise (intérêts seuls)</td><td class="num">671 €/mois</td><td class="num" style="color:var(--green); font-weight:700;">24,7%</td><td><span class="badge green">✓ Très confortable</span></td></tr>
+        <tr class="good"><td>Option A · après franchise — 230 k€ / 24 ans / 3,5%</td><td class="num">1 182 €/mois</td><td class="num" style="color:var(--green); font-weight:700;">33,0%</td><td><span class="badge green">✓ Confortable</span></td></tr>
+        <tr class="target"><td><strong>Référence sans différé — 230 k€ / 25 ans / 3,5%</strong></td><td class="num"><strong>1 151 €/mois</strong></td><td class="num"><strong>32,5%</strong></td><td><span class="badge blue">Référence</span></td></tr>
+        <tr><td>Option B · pendant franchise (aucune mensualité)</td><td class="num">0 €</td><td class="num" style="color:var(--green); font-weight:700;">13,8%</td><td><span class="badge green">✓ Aucune charge</span></td></tr>
+        <tr><td>Option B · après franchise — 238 k€ / 24 ans / 3,5%</td><td class="num">1 224 €/mois</td><td class="num" style="color:var(--green); font-weight:700;">33,7%</td><td><span class="badge green">✓ Dans la norme</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note green" style="margin-top:12px;">
+      💡 <strong>Conclusion :</strong> Dans les deux options, le taux d'endettement reste <strong>sous le seuil légal de 35%</strong> après la période de franchise. Le différé de 12 mois maximum permet de gérer sereinement les travaux (20 k€) et d'encaisser les premiers loyers avant de rembourser le capital.
+    </div>
+  </div>
+</div>
+
 <!-- PATRIMOINE -->
 <div class="section" id="patrimoine">
   <div class="section-header">
@@ -691,20 +753,6 @@ footer strong { color: #a0c4ff; }
     </div>
   </div>
 
-  <!-- POINTS D'ATTENTION -->
-  <div class="card" style="margin-top:24px;">
-    <div class="card-title">⚠️ Points à clarifier avec la banquière</div>
-    <table class="data-table">
-      <thead><tr><th>Point</th><th>Situation</th><th>Action recommandée</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Prime 14 000 € brut</strong></td><td>Fiscalisée comme salaire — versée ponctuellement</td><td>Lettre employeur confirmant la récurrence, ou bulletin du mois de versement</td></tr>
-        <tr><td><strong>Logement de fonction</strong></td><td>Avantage en nature lié à l'emploi</td><td>Préciser : achat = RP ou résidence secondaire ? Impact sur logement actuel ?</td></tr>
-        <tr><td><strong>Comptes Allemagne (N26, Sparkasse)</strong></td><td>4 comptes déclarés — case 8UU cochée</td><td>Fournir relevés 3 mois si demandés</td></tr>
-        <tr><td><strong>Cryptos Coinbase (10 k€)</strong></td><td>Déclarées — non retenues en garantie</td><td>Mentionner comme patrimoine actif uniquement</td></tr>
-        <tr><td><strong>Déficit LMNP (-1 356 €)</strong></td><td>= amortissements non décaissés — cash-flow réel +4 316 €/an</td><td>Joindre liasse fiscale 2025 · Expliquer : optimisation LMNP au réel, pas une perte</td></tr>
-      </tbody>
-    </table>
-  </div>
 </div>
 
 <!-- DOCUMENTS -->
@@ -780,20 +828,6 @@ footer strong { color: #a0c4ff; }
       <div class="doc-info">
         <div class="doc-name">Liasse fiscale 2025 — Les Sapineaux</div>
         <div class="doc-desc">SIREN 528878457 · CA 15 584 € · Bilan net 150 602 € · Télédéclarée 29/04/2026</div>
-      </div>
-    </a>
-    <a class="doc-card" href="docs/01_Lettre_accompagnement.docx" target="_blank">
-      <div class="doc-icon di-docx">LET<br>TRE</div>
-      <div class="doc-info">
-        <div class="doc-name">Lettre d'accompagnement</div>
-        <div class="doc-desc">Présentation du projet et du dossier</div>
-      </div>
-    </a>
-    <a class="doc-card" href="docs/02_Note_synthese_dossier.docx" target="_blank">
-      <div class="doc-icon di-docx">SYN<br>TH</div>
-      <div class="doc-info">
-        <div class="doc-name">Note de synthèse du dossier</div>
-        <div class="doc-desc">Résumé complet de la situation financière</div>
       </div>
     </a>
     <a class="doc-card" href="docs/03_Plan_financement.xlsx" target="_blank">
