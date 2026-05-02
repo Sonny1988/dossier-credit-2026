@@ -98,10 +98,47 @@
 
   .footer { background: #1a1a2e; color: #8899aa; text-align: center; padding: 18px; font-size: 11px; }
 
-  @media print { body { background: white; } .page { box-shadow: none; margin: 0; } }
+  @media print { body { background: white; } .page { box-shadow: none; margin: 0; } nav.doc-nav { display: none; } }
+  html { scroll-behavior: smooth; }
+
+  nav.doc-nav {
+    position: sticky; top: 0; z-index: 200;
+    background: #0f3460;
+    display: flex; align-items: center; gap: 0;
+    padding: 0 16px; overflow-x: auto;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    scrollbar-width: none;
+  }
+  nav.doc-nav::-webkit-scrollbar { display: none; }
+  nav.doc-nav .nav-brand {
+    color: white; font-weight: 700; font-size: 12px;
+    padding: 14px 16px 14px 0; white-space: nowrap;
+    border-right: 1px solid rgba(255,255,255,0.15); margin-right: 4px; flex-shrink: 0;
+  }
+  nav.doc-nav a {
+    color: #a0c4ff; text-decoration: none; font-size: 11px; font-weight: 600;
+    padding: 14px 12px; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s;
+  }
+  nav.doc-nav a:hover { color: white; border-bottom-color: #d4a017; }
 </style>
 </head>
 <body>
+
+<nav class="doc-nav">
+  <span class="nav-brand">🏠 Dossier Crédit 2026</span>
+  <a href="#objectif">Projet</a>
+  <a href="#indicateurs">Indicateurs</a>
+  <a href="#emprunteurs">Emprunteurs</a>
+  <a href="#revenus">Revenus</a>
+  <a href="#endettement">Endettement</a>
+  <a href="#faisabilite">Faisabilité</a>
+  <a href="#patrimoine">Patrimoine</a>
+  <a href="#lmnp">LMNP</a>
+  <a href="#atouts">Atouts</a>
+  <a href="#documents">Documents</a>
+</nav>
+
 <div class="page">
 
   <!-- HEADER -->
@@ -121,7 +158,7 @@
   </div>
 
   <!-- OBJECTIF -->
-  <div class="section">
+  <div class="section" id="objectif">
     <div class="section-title">Objectif du projet immobilier</div>
     <div class="objectif-banner">
       <div class="obj-item"><div class="val">200 – 230 k€</div><div class="lab">Montant à emprunter</div></div>
@@ -135,7 +172,7 @@
   </div>
 
   <!-- KPI -->
-  <div class="section">
+  <div class="section" id="indicateurs">
     <div class="section-title">Indicateurs clés du dossier</div>
     <div class="kpi-grid">
       <div class="kpi green">
@@ -167,7 +204,7 @@
   </div>
 
   <!-- IDENTITÉ -->
-  <div class="section">
+  <div class="section" id="emprunteurs">
     <div class="section-title">Identité et situation familiale</div>
     <div class="two-col">
       <div class="info-block">
@@ -231,7 +268,7 @@
   </div>
 
   <!-- REVENUS MENSUELS — CŒUR DU CALCUL -->
-  <div class="section">
+  <div class="section" id="revenus">
     <div class="section-title">Revenus mensuels nets — base de calcul bancaire</div>
 
     <div class="revenu-box">
@@ -331,7 +368,7 @@
   </div>
 
   <!-- ENDETTEMENT ET CAPACITÉ -->
-  <div class="section">
+  <div class="section" id="endettement">
     <div class="section-title">Endettement actuel et capacité de remboursement</div>
     <div class="two-col">
       <div class="info-block">
@@ -396,7 +433,7 @@
   </div>
 
   <!-- FAISABILITÉ OBJECTIF -->
-  <div class="section">
+  <div class="section" id="faisabilite">
     <div class="section-title">Analyse de faisabilité — objectif 200 000 – 230 000 € sur 25 ans</div>
 
     <div class="faisabilite-ok">
@@ -511,7 +548,7 @@
   </div>
 
   <!-- PATRIMOINE -->
-  <div class="section">
+  <div class="section" id="patrimoine">
     <div class="section-title">Patrimoine et actifs disponibles</div>
     <div class="three-col">
       <div class="info-block">
@@ -549,7 +586,7 @@
   </div>
 
   <!-- LMNP -->
-  <div class="section">
+  <div class="section" id="lmnp">
     <div class="section-title">Activité de location meublée (LMNP) — Liasse fiscale officielle 2025</div>
     <div class="two-col">
       <div class="info-block">
@@ -581,7 +618,7 @@
   </div>
 
   <!-- ATOUTS -->
-  <div class="section">
+  <div class="section" id="atouts">
     <div class="section-title">Atouts du dossier</div>
     <div class="strengths">
       <div class="strength-item green">
@@ -620,7 +657,7 @@
   </div>
 
   <!-- PIÈCES JUSTIFICATIVES -->
-  <div class="section">
+  <div class="section" id="documents">
     <div class="section-title">Pièces justificatives jointes</div>
     <div class="doc-list">
       <div class="doc-item">
