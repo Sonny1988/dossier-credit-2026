@@ -85,7 +85,10 @@
 
   .doc-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .doc-item { display: flex; align-items: center; gap: 10px; background: #f8faff; border: 1px solid #dde8ff; border-radius: 6px; padding: 10px 14px; }
+  a.doc-item { text-decoration: none; color: inherit; transition: background 0.15s, border-color 0.15s; }
+  a.doc-item:hover { background: #e3f0ff; border-color: #0f3460; cursor: pointer; }
   .doc-icon { width: 32px; height: 32px; background: #0f3460; color: white; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; flex-shrink: 0; text-align: center; line-height: 1.2; }
+  a.doc-item .doc-icon { background: #1565c0; }
   .doc-name { font-weight: 600; color: #1a1a2e; font-size: 12px; }
   .doc-type { color: #888; font-size: 11px; margin-top: 2px; }
 
@@ -137,6 +140,7 @@
   <a href="#lmnp">LMNP</a>
   <a href="#atouts">Atouts</a>
   <a href="#documents">Documents</a>
+
 </nav>
 
 <div class="page">
@@ -175,17 +179,17 @@
     <div class="section-title">Indicateurs clés du dossier</div>
     <div class="kpi-grid">
       <div class="kpi green">
-        <div class="kpi-value">6 143 €</div>
+        <div class="kpi-value">6 643 €</div>
         <div class="kpi-label">Revenus nets / mois</div>
-        <div class="kpi-sub">Salaires + prime + locatif</div>
+        <div class="kpi-sub">Salaires + prime + locatif + Kindergeld</div>
       </div>
       <div class="kpi green">
-        <div class="kpi-value">13,8%</div>
+        <div class="kpi-value">12,8%</div>
         <div class="kpi-label">Taux endettement actuel</div>
         <div class="kpi-sub">Seuil légal : 35%</div>
       </div>
       <div class="kpi green">
-        <div class="kpi-value">1 303 €</div>
+        <div class="kpi-value">1 479 €</div>
         <div class="kpi-label">Mensualité max dispo</div>
         <div class="kpi-sub">Pour un nouveau prêt</div>
       </div>
@@ -197,7 +201,7 @@
       <div class="kpi green">
         <div class="kpi-value">230 k€ ✓</div>
         <div class="kpi-label">Objectif atteignable</div>
-        <div class="kpi-sub">Taux d'endettement 33%</div>
+        <div class="kpi-sub">Taux d'endettement 30%</div>
       </div>
     </div>
   </div>
@@ -226,7 +230,7 @@
       <div class="info-row"><span class="info-label">Adresse fiscale</span><span class="info-value">Les Sapineaux, 511 Le Fay — 73120 COURCHEVEL</span></div>
       <div class="info-row"><span class="info-label">Enfants à charge</span><span class="info-value">2 — Charly (20/11/2022) et Tom (05/11/2025)</span></div>
       <div class="info-row"><span class="info-label">Parts fiscales</span><span class="info-value">2,50 parts</span></div>
-      <div class="info-row"><span class="info-label">Logement actuel</span><span class="info-value">Logement de fonction — Les Sapineaux, lié au poste</span></div>
+      <div class="info-row"><span class="info-label">Logement actuel</span><span class="info-value">Hébergé à titre gratuit chez ma famille (Allemagne) — hors saison ski | Adresse fiscale France : 511 Le Fay, Courchevel</span></div>
     </div>
   </div>
 
@@ -281,14 +285,21 @@
         <span class="rl">Revenus locatifs retenus à 70% (15 584 € brut / an — liasse fiscale officielle 2025)</span>
         <span class="rv">909 €</span>
       </div>
+      <div class="revenu-line">
+        <span class="rl">Kindergeld — 2 enfants (Familienkasse Allemagne — 250 €/enfant)</span>
+        <span class="rv">500 €</span>
+      </div>
       <div class="revenu-line total-line">
         <span class="rl"><strong>TOTAL REVENUS NETS MENSUELS</strong></span>
-        <span class="rv"><strong>6 143 €</strong></span>
+        <span class="rv"><strong>6 643 €</strong></span>
       </div>
     </div>
 
     <div class="note-box" style="margin-top:12px;">
       <strong>Méthode de calcul de la prime :</strong> La prime annuelle de 14 000 € brut est fiscalisée comme salaire (visible sur les avis d'imposition). Pour la banque, elle est lissée sur 12 mois à raison de 14 000 × 71,5% (ratio net/brut constaté sur fiches de paie) ÷ 12 = <strong>834 €/mois</strong>. Pour la faire valider, fournir une lettre de l'employeur confirmant son caractère récurrent, ou le bulletin de paie du mois où elle est versée.
+    </div>
+    <div class="note-blue note-box" style="margin-top:8px;">
+      <strong>Kindergeld (500 €/mois) :</strong> Prestation familiale publique allemande versée par la Familienkasse — 250 €/enfant × 2 enfants. Revenu stable et documentable. Certaines banques françaises l'intègrent dans les revenus du foyer, d'autres le classent en "reste à vivre". Pièce à joindre : attestation de versement Familienkasse. <em>Sans ce revenu, mensualité disponible = 1 303 €/mois — taux d'endettement à 230 000 € = 32,5%.</em>
     </div>
   </div>
 
@@ -378,15 +389,15 @@
       </div>
       <div class="info-block">
         <h4>Calcul de la capacité résiduelle</h4>
-        <div class="info-row"><span class="info-label">Revenus nets mensuels</span><span class="info-value"><strong>6 143 €</strong></span></div>
-        <div class="info-row"><span class="info-label">Taux d'endettement actuel</span><span class="info-value" style="color:#1a7a4a; font-size:16px; font-weight:700;">13,8%</span></div>
+        <div class="info-row"><span class="info-label">Revenus nets mensuels</span><span class="info-value"><strong>6 643 €</strong></span></div>
+        <div class="info-row"><span class="info-label">Taux d'endettement actuel</span><span class="info-value" style="color:#1a7a4a; font-size:16px; font-weight:700;">12,8%</span></div>
         <div class="info-row"><span class="info-label">Seuil légal HCSF</span><span class="info-value"><strong>35%</strong></span></div>
-        <div class="info-row"><span class="info-label">Mensualité totale max (35%)</span><span class="info-value">6 143 × 35% = 2 150 €</span></div>
+        <div class="info-row"><span class="info-label">Mensualité totale max (35%)</span><span class="info-value">6 643 × 35% = 2 325 €</span></div>
         <div class="info-row"><span class="info-label">Moins charges actuelles</span><span class="info-value">- 847 €</span></div>
         <div style="border-top:2px solid #1a7a4a; padding-top:8px; margin-top:6px;">
           <div class="info-row">
             <span style="font-weight:700; color:#1a7a4a;">Mensualité dispo nouveau prêt</span>
-            <span style="font-weight:700; color:#1a7a4a; font-size:18px;">1 303 €/mois</span>
+            <span style="font-weight:700; color:#1a7a4a; font-size:18px;">1 479 €/mois</span>
           </div>
         </div>
       </div>
@@ -395,30 +406,30 @@
     <div class="bar-section" style="margin-top:18px;">
       <strong style="font-size:13px; color:#0f3460;">Visualisation de l'endettement</strong>
       <div class="bar-row">
-        <div class="bar-title"><span>Taux actuel — crédit en cours seul</span><span style="color:#1a7a4a;">13,8%</span></div>
+        <div class="bar-title"><span>Taux actuel — crédit en cours seul</span><span style="color:#1a7a4a;">12,8%</span></div>
         <div class="bar-wrap">
-          <div class="bar-fill bg-green" style="width:39.4%;">13,8%</div>
+          <div class="bar-fill bg-green" style="width:36.6%;">12,8%</div>
           <div class="bar-limit">SEUIL 35%</div>
         </div>
       </div>
       <div class="bar-row">
-        <div class="bar-title"><span>Avec nouveau prêt 200 000 € / 25 ans (1 001 €/mois)</span><span style="color:#1a7a4a;">30,1% ✓</span></div>
+        <div class="bar-title"><span>Avec nouveau prêt 200 000 € / 25 ans (1 001 €/mois)</span><span style="color:#1a7a4a;">27,8% ✓</span></div>
         <div class="bar-wrap">
-          <div class="bar-fill bg-blue" style="width:86%;">30,1%</div>
+          <div class="bar-fill bg-blue" style="width:79.4%;">27,8%</div>
           <div class="bar-limit">SEUIL 35%</div>
         </div>
       </div>
       <div class="bar-row">
-        <div class="bar-title"><span>Avec nouveau prêt 220 000 € / 25 ans (1 101 €/mois)</span><span style="color:#1a7a4a;">31,7% ✓</span></div>
+        <div class="bar-title"><span>Avec nouveau prêt 220 000 € / 25 ans (1 101 €/mois)</span><span style="color:#1a7a4a;">29,3% ✓</span></div>
         <div class="bar-wrap">
-          <div class="bar-fill bg-teal" style="width:90.6%;">31,7%</div>
+          <div class="bar-fill bg-teal" style="width:83.7%;">29,3%</div>
           <div class="bar-limit">SEUIL 35%</div>
         </div>
       </div>
       <div class="bar-row">
-        <div class="bar-title"><span>Avec nouveau prêt 230 000 € / 25 ans (1 151 €/mois)</span><span style="color:#1a7a4a;">32,5% ✓</span></div>
+        <div class="bar-title"><span>Avec nouveau prêt 230 000 € / 25 ans (1 151 €/mois)</span><span style="color:#1a7a4a;">30,1% ✓</span></div>
         <div class="bar-wrap">
-          <div class="bar-fill bg-teal" style="width:92.9%;">32,5%</div>
+          <div class="bar-fill bg-teal" style="width:86.0%;">30,1%</div>
           <div class="bar-limit">SEUIL 35%</div>
         </div>
       </div>
@@ -449,7 +460,7 @@
             <td class="num">830 €</td>
             <td class="num">876 €</td>
             <td class="num">924 €</td>
-            <td class="num">~28,0%</td>
+            <td class="num">~25,9%</td>
             <td><span class="badge">✓ Très confortable</span></td>
           </tr>
           <tr class="target-row">
@@ -457,7 +468,7 @@
             <td class="num">948 €</td>
             <td class="num"><strong>1 001 €</strong></td>
             <td class="num">1 056 €</td>
-            <td class="num"><strong>30,1%</strong></td>
+            <td class="num"><strong>27,8%</strong></td>
             <td><span class="badge">✓ Confortable</span></td>
           </tr>
           <tr class="target-row">
@@ -465,7 +476,7 @@
             <td class="num">1 043 €</td>
             <td class="num"><strong>1 101 €</strong></td>
             <td class="num">1 162 €</td>
-            <td class="num"><strong>31,7%</strong></td>
+            <td class="num"><strong>29,3%</strong></td>
             <td><span class="badge">✓ Bon</span></td>
           </tr>
           <tr class="target-row">
@@ -473,22 +484,22 @@
             <td class="num">1 090 €</td>
             <td class="num"><strong>1 151 €</strong></td>
             <td class="num">1 215 €</td>
-            <td class="num"><strong>32,5%</strong></td>
-            <td><span class="badge">✓ Dans la limite</span></td>
+            <td class="num"><strong>30,1%</strong></td>
+            <td><span class="badge">✓ Confortable</span></td>
           </tr>
           <tr class="warn-row">
             <td>250 000 € / 25 ans ← au-delà</td>
             <td class="num">1 185 €</td>
             <td class="num">1 252 €</td>
             <td class="num">1 320 €</td>
-            <td class="num">~34,2%</td>
-            <td><span class="badge-orange badge">⚠ Proche limite</span></td>
+            <td class="num">~31,6%</td>
+            <td><span class="badge-orange badge">⚠ Hors Kindergeld : 34,2%</span></td>
           </tr>
         </tbody>
       </table>
 
       <p style="margin-top:14px; font-size:12px; color:#1a3a28; background:#c8e6c9; padding:10px 14px; border-radius:6px;">
-        <strong>Conclusion :</strong> Avec une mensualité disponible de <strong>1 303 €/mois</strong>, le dossier permet d'emprunter jusqu'à <strong>230 000 €</strong> sur 25 ans à 3,5% (taux d'endettement total 32,5%), bien en dessous du seuil HCSF de 35%. Même à 4%, le taux reste sous 35% pour la cible de 230 000 €. L'objectif est <strong>pleinement atteignable</strong> avec les revenus actuels du foyer.
+        <strong>Conclusion :</strong> Avec une mensualité disponible de <strong>1 479 €/mois</strong> (Kindergeld inclus), le dossier permet d'emprunter jusqu'à <strong>230 000 €</strong> sur 25 ans à 3,5% (taux d'endettement total 30,1%), bien en dessous du seuil HCSF de 35%. Sans intégrer le Kindergeld, la mensualité disponible reste de 1 303 €/mois (taux 32,5% à 230 000 €). Même à 4%, le taux reste sous 35% pour la cible de 230 000 €. L'objectif est <strong>pleinement atteignable</strong> avec les revenus actuels du foyer.
       </p>
     </div>
   </div>
@@ -615,8 +626,8 @@
     <div class="section-title">Atouts du dossier</div>
     <div class="strengths">
       <div class="strength-item green">
-        <div class="strength-title">Taux d'endettement très bas : 13,8%</div>
-        <div class="strength-text">Le crédit existant (847 €/mois) ne représente que 13,8% des revenus nets. La marge jusqu'au seuil légal de 35% est de +21,2 points — dossier très solide sur ce critère.</div>
+        <div class="strength-title">Taux d'endettement très bas : 12,8%</div>
+        <div class="strength-text">Le crédit existant (847 €/mois) ne représente que 12,8% des revenus nets. La marge jusqu'au seuil légal de 35% est de +22,2 points — dossier très solide sur ce critère.</div>
       </div>
       <div class="strength-item green">
         <div class="strength-title">Double CDI stable — 4 ans 5 mois d'ancienneté</div>
@@ -653,56 +664,60 @@
   <div class="section" id="documents">
     <div class="section-title">Pièces justificatives jointes</div>
     <div class="doc-list">
-      <div class="doc-item">
+      <a class="doc-item" href="https://sonny1988.github.io/dossier-credit-2026/docs/Avis_d_impot_2024_sur_les_revenus_2023.pdf" target="_blank">
         <div class="doc-icon">IR<br>2023</div>
         <div><div class="doc-name">Avis d'imposition 2024 (revenus 2023)</div><div class="doc-type">RFR 51 922 € — remboursement 1 715 €</div></div>
-      </div>
-      <div class="doc-item">
+      </a>
+      <a class="doc-item" href="https://sonny1988.github.io/dossier-credit-2026/docs/Avis_d_impot_2025_sur_les_revenus_2024.pdf" target="_blank">
         <div class="doc-icon">IR<br>2024</div>
         <div><div class="doc-name">Avis d'imposition 2025 (revenus 2024)</div><div class="doc-type">RFR 64 992 € — solde 484 €</div></div>
-      </div>
-      <div class="doc-item">
+      </a>
+      <a class="doc-item" href="https://sonny1988.github.io/dossier-credit-2026/docs/Declaration_en_ligne_des_revenus_2025.pdf" target="_blank">
         <div class="doc-icon">2042</div>
         <div><div class="doc-name">Déclaration revenus 2025 (28/04/2026)</div><div class="doc-type">Salaires + LMNP + Booking/Airbnb + comptes étrangers</div></div>
-      </div>
-      <div class="doc-item">
+      </a>
+      <a class="doc-item" href="https://sonny1988.github.io/dossier-credit-2026/docs/Fiche_de_paie_fevrier_2026.pdf" target="_blank">
         <div class="doc-icon">BP<br>FÉV</div>
         <div><div class="doc-name">Bulletin de paie — Sonny — Février 2026</div><div class="doc-type">SCI La Montagne — Brut 3 659 € — Net 2 616 €</div></div>
-      </div>
-      <div class="doc-item">
+      </a>
+      <a class="doc-item" href="https://sonny1988.github.io/dossier-credit-2026/docs/BP_Sonny_Avril_2026.pdf" target="_blank">
         <div class="doc-icon">BP<br>AVR</div>
         <div><div class="doc-name">Bulletin de paie — Sonny — Avril 2026</div><div class="doc-type">SCI La Montagne — Brut 3 659 € — Net 2 616 €</div></div>
-      </div>
-      <div class="doc-item">
+      </a>
+      <a class="doc-item" href="https://sonny1988.github.io/dossier-credit-2026/docs/CDI_Sonny_UBERTALLI.pdf" target="_blank">
         <div class="doc-icon">CDI</div>
         <div><div class="doc-name">Contrat CDI — Sonny UBERTALLI</div><div class="doc-type">SCI La Montagne — Depuis 01/12/2021</div></div>
-      </div>
-      <div class="doc-item">
+      </a>
+      <a class="doc-item" href="https://sonny1988.github.io/dossier-credit-2026/docs/CDI_Nina_Schneider.pdf" target="_blank">
         <div class="doc-icon">CDI</div>
         <div><div class="doc-name">Contrat CDI — Nina SCHNEIDER</div><div class="doc-type">SAS La Montagne — Depuis 01/12/2021</div></div>
-      </div>
-      <div class="doc-item">
+      </a>
+      <a class="doc-item" href="https://sonny1988.github.io/dossier-credit-2026/docs/Tableau_amortissement.pdf" target="_blank">
         <div class="doc-icon">AMO</div>
         <div><div class="doc-name">Tableau d'amortissement — crédit en cours</div><div class="doc-type">707 €/mois + 140 € assurance — oct. 2024</div></div>
-      </div>
-      <div class="doc-item">
+      </a>
+      <a class="doc-item" href="https://sonny1988.github.io/dossier-credit-2026/docs/Liasse_fiscale_LMNP_2025.pdf" target="_blank">
         <div class="doc-icon">LMNP<br>2025</div>
         <div><div class="doc-name">Liasse fiscale 2025 — Les Sapineaux (SIREN 528878457)</div><div class="doc-type">CA 15 584 € — Bilan net 150 602 € — Télédéclarée 29/04/2026</div></div>
-      </div>
-      <div class="doc-item">
+      </a>
+      <a class="doc-item" href="https://sonny1988.github.io/dossier-credit-2026/docs/Passeport_Sonny_UBERTALLI.jpg" target="_blank">
         <div class="doc-icon">PASS</div>
         <div><div class="doc-name">Passeport — Sonny UBERTALLI</div><div class="doc-type">Pièce d'identité emprunteur principal</div></div>
-      </div>
+      </a>
     </div>
     <div class="note-box" style="margin-top:16px;">
       <strong>Documents à joindre en complément :</strong>
       Relevés bancaires Crédit Agricole des Savoie — 3 derniers mois &bull;
-      Justificatif de mariage 2025 (livret de famille) &bull;
-      Passeport Nina SCHNEIDER &bull;
+      Bulletin de paie Sonny — mars 2026 (compléter les 3 mois consécutifs) &bull;
       3 derniers bulletins de paie de Mme SCHNEIDER (retour congé mat.) &bull;
+      Justificatif de mariage 2025 (livret de famille) &bull;
+      Passeport Nina SCHNEIDER (CNI ou passeport) &bull;
+      Triple pièce hébergement : attestation famille + CNI hébergeur + justificatif domicile allemand &bull;
+      Attestation Familienkasse — Kindergeld 500 €/mois &bull;
       Lettre employeur confirmant prime annuelle 14 000 € brut &bull;
       Relevé compte-titres (12 000 €) &bull;
-      Titre de propriété ou bail du bien locatif LMNP
+      Titre de propriété ou bail du bien locatif LMNP &bull;
+      RIB Crédit Agricole des Savoie
     </div>
   </div>
 
